@@ -45,4 +45,29 @@ public class PersonService {
         }
         return persons;
     }
+
+    public void updateStudents() {
+        String studentId = validator.inputStrNoBlank("Enter student ID to update: ");
+        for (Person person : persons) {
+            if (person instanceof Student) {
+                if (((Student) person).getStudentId().equals(studentId)) {
+
+                    //update student
+                    person.setName(validator.inputStrNoBlank("Enter name: "));
+                    person.setGender(validator.inputStrNoBlank("Enter gender: "));
+                    person.setPhoneNumber(validator.inputStrNoBlank("Enter phone number: "));
+                    String email;
+                    do {
+                        System.out.print("Enter email: ");
+                        email = sc.nextLine();
+                    } while (validator.isValidEmail(email));
+                    person.setEmail(email);
+                    ((Student) person).setTheory(validator.inputMark(0, 10, "Enter theory: "));
+                    ((Student) person).setPractice(validator.inputMark(0, 10, "Enter practice: "));
+                    System.out.println("Student updated successfully");
+                    return;
+                }
+            }
+        }
+    }
 }
