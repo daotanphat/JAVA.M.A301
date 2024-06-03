@@ -46,7 +46,7 @@ public class PersonService {
         return persons;
     }
 
-    public void updateStudents() {
+    public void updateStudents(List<Person> persons) {
         String studentId = validator.inputStrNoBlank("Enter student ID to update: ");
         for (Person person : persons) {
             if (person instanceof Student) {
@@ -71,7 +71,7 @@ public class PersonService {
         }
     }
 
-    public void displayTeacher() {
+    public void displayTeacher(List<Person> persons) {
         for (Person person : persons) {
             if (person instanceof Teacher) {
                 if (((Teacher) person).getBasicSalary() > 1000) {
@@ -81,7 +81,7 @@ public class PersonService {
         }
     }
 
-    public void report() {
+    public void report(List<Person> persons) {
         for (Person person : persons) {
             if (person instanceof Student) {
                 if (((Student) person).calculateFinalMark() >= 6) {
