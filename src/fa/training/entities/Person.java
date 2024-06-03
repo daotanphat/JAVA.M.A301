@@ -1,6 +1,6 @@
 package fa.training.entities;
 
-abstract class Person {
+public abstract class Person {
     protected String name;
     protected String gender;
     protected String phoneNumber;
