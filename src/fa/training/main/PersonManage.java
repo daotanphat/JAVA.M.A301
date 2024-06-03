@@ -24,10 +24,13 @@ public class PersonManage {
                     personList = personService.addPersons();
                     break;
                 case 2:
+                    personService.updateStudents(personList);
                     break;
                 case 3:
+                    personService.displayTeacher(personList);
                     break;
                 case 4:
+                    personService.report(personList);
                     break;
             }
         }while (validator.checkQuit(choice));
