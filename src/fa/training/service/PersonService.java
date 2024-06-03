@@ -70,4 +70,24 @@ public class PersonService {
             }
         }
     }
+
+    public void displayTeacher() {
+        for (Person person : persons) {
+            if (person instanceof Teacher) {
+                if (((Teacher) person).getBasicSalary() > 1000) {
+                    System.out.println((Teacher) person);
+                }
+            }
+        }
+    }
+
+    public void report() {
+        for (Person person : persons) {
+            if (person instanceof Student) {
+                if (((Student) person).calculateFinalMark() >= 6) {
+                    System.out.println((Student) person);
+                }
+            }
+        }
+    }
 }
