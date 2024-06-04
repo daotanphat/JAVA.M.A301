@@ -34,4 +34,13 @@ public class Teacher extends Person {
     void purchaseParkingPass() {
 
     }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", salary=" + calculateSalary() +
+                '}';
+    }
 }
