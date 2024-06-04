@@ -18,7 +18,7 @@ public class PersonManage {
         int choice;
         do {
             constants.menu();
-            choice = validator.inputInt("Enter your choice", 1, 4);
+            choice = validator.inputInt("Enter your choice: ", 1, 5);
             switch (choice) {
                 case 1:
                     personList = personService.addPersons();
@@ -32,7 +32,10 @@ public class PersonManage {
                 case 4:
                     personService.report(personList);
                     break;
+                case 5:
+                    System.out.println("QUIT...");
+                    break;
             }
-        }while (validator.checkQuit(choice));
+        } while (validator.checkQuit(choice));
     }
 }
