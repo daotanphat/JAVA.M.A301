@@ -45,4 +45,11 @@ public class Student extends Person {
     void purchaseParkingPass() {
 
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "Student ID = " + studentId + ", name = " + name + ",  Final Mark = " + calculateFinalMark() + + '\'' +
+                '}';
+    }
 }
