@@ -40,7 +40,7 @@ public class Teacher extends Person {
         return "Teacher{" +
                 "name='" + name + '\'' +
                 ", gender='" + gender + '\'' +
-                ", salary=" + calculateSalary() +
+                ", salary=" + calculateSalary() + "$" +
                 '}';
     }
 }
