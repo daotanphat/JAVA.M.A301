@@ -26,7 +26,10 @@ public class PersonService {
             do {
                 System.out.print("Enter email: ");
                 email = sc.nextLine();
-            } while (validator.isValidEmail(email));
+                if (!validator.isValidEmail(email)) {
+                    System.out.println("Invalid email. Pls enter again!");
+                }
+            } while (!validator.isValidEmail(email));
             switch (personType) {
                 case 1:
                     String studentId = validator.inputStrNoBlank("Enter student ID: ");
@@ -47,11 +50,16 @@ public class PersonService {
     }
 
     public void updateStudents(List<Person> persons) {
+        int counter = 0;
+        if (persons.isEmpty()) {
+            System.out.println("Nothing to update");
+            return;
+        }
         String studentId = validator.inputStrNoBlank("Enter student ID to update: ");
         for (Person person : persons) {
             if (person instanceof Student) {
                 if (((Student) person).getStudentId().equals(studentId)) {
-
+                    counter++;
                     //update student
                     person.setName(validator.inputStrNoBlank("Enter name: "));
                     person.setGender(validator.inputStrNoBlank("Enter gender: "));
@@ -60,7 +68,10 @@ public class PersonService {
                     do {
                         System.out.print("Enter email: ");
                         email = sc.nextLine();
-                    } while (validator.isValidEmail(email));
+                        if (!validator.isValidEmail(email)) {
+                            System.out.println("Invalid email. Pls enter again!");
+                        }
+                    } while (!validator.isValidEmail(email));
                     person.setEmail(email);
                     ((Student) person).setTheory(validator.inputMark(0, 10, "Enter theory: "));
                     ((Student) person).setPractice(validator.inputMark(0, 10, "Enter practice: "));
@@ -69,9 +80,19 @@ public class PersonService {
                 }
             }
         }
+
+        if (counter == 0) {
+            System.out.println("Not found student have student ID " + studentId + " to update");
+            return;
+        }
     }
 
     public void displayTeacher(List<Person> persons) {
+        if (persons.isEmpty()) {
+            System.out.println("Nothing to display");
+            return;
+        }
+
         for (Person person : persons) {
             if (person instanceof Teacher) {
                 if (((Teacher) person).getBasicSalary() > 1000) {
@@ -82,6 +103,10 @@ public class PersonService {
     }
 
     public void report(List<Person> persons) {
+        if (persons.isEmpty()) {
+            System.out.println("Nothing to display");
+            return;
+        }
         for (Person person : persons) {
             if (person instanceof Student) {
                 if (((Student) person).calculateFinalMark() >= 6) {
