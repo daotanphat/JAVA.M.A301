@@ -93,12 +93,17 @@ public class PersonService {
             return;
         }
 
+        int count = 0;
         for (Person person : persons) {
             if (person instanceof Teacher) {
-                if (((Teacher) person).getBasicSalary() > 1000) {
+                if (((Teacher) person).calculateSalary() > 1000) {
+                    count++;
                     System.out.println((Teacher) person);
                 }
             }
+        }
+        if(count == 0) {
+            System.out.println("No teacher has a salary > 1000$");
         }
     }
 
@@ -107,12 +112,17 @@ public class PersonService {
             System.out.println("Nothing to display");
             return;
         }
+        int count = 0;
         for (Person person : persons) {
             if (person instanceof Student) {
                 if (((Student) person).calculateFinalMark() >= 6) {
+                    count++;
                     System.out.println((Student) person);
                 }
             }
+        }
+        if(count == 0) {
+            System.out.println("No students have qualified!");
         }
     }
 }
