@@ -39,19 +39,19 @@ public class Validator {
 
     public double inputMark(int min, int max, String message) {
         Scanner sc = new Scanner(System.in);
-        System.out.print(message);
-        double result = 0;
-        while(true){
+        double result;
+        while (true) {
             try {
+                System.out.print(message);
                 result = sc.nextDouble();
                 if (result < min || result > max) {
-                    throw new IllegalArgumentException();
+                    System.out.println("Pls enter mark from " + min + " to " + max);
+                } else {
+                    break;
                 }
-                break;
-            } catch (NumberFormatException e) {
+            } catch (InputMismatchException e) {
                 System.out.println("Pls enter mark from " + min + " to " + max);
-            }catch (IllegalArgumentException e) {
-                System.out.println("Pls enter mark from " + min + " to " + max);
+                sc.next();
             }
         }
         return result;
@@ -60,18 +60,18 @@ public class Validator {
     public int inputInt(String message, int min, int max) {
         Scanner sc = new Scanner(System.in);
         int choice;
-        while(true){
+        while (true) {
             try {
-                System.out.println(message);
+                System.out.print(message);
                 choice = sc.nextInt();
-                if(choice < min || choice > max) {
-                    throw new IllegalArgumentException();
+                if (choice < min || choice > max) {
+                    System.out.println("Input a number from " + min + " to " + max);
+                } else {
+                    break;
                 }
-                break;
-            }catch (InputMismatchException e) {
+            } catch (InputMismatchException exception) {
                 System.out.println("Input a number from " + min + " to " + max);
-            }catch (IllegalArgumentException e){
-                System.out.println("Input a number from " + min + " to " + max);
+                sc.next();
             }
         }
         return choice;
@@ -90,8 +90,8 @@ public class Validator {
         return data;
     }
 
-    public boolean checkQuit(int choice){
-        if(choice == 1 || choice == 2 || choice == 3 || choice == 4) return true;
+    public boolean checkQuit(int choice) {
+        if (choice == 1 || choice == 2 || choice == 3 || choice == 4) return true;
         return false;
     }
 }
